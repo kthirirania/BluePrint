@@ -120,7 +120,7 @@ class BluetoothPrinterPlugin(private val activity: Activity, private val channel
             else 
             activity.showToast("Failed to connect !")
 
-            result.success(res? 1: 0)
+            result.success(if(res) 1 else 0)
         } catch (e: Exception) {
             e.printStackTrace()
 
