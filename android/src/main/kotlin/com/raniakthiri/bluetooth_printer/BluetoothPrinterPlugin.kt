@@ -115,15 +115,17 @@ class BluetoothPrinterPlugin(private val activity: Activity, private val channel
 
         try {
             val res = mPrinterPlugin.connectToPrinter(device, activity)
-            if (res) activity.showToast("Connected to ${device["name"]}")
-            else activity.showToast("Failed to connect !")
+            if (res) 
+                activity.showToast("Connected to ${device["name"]}")
+            else 
+            activity.showToast("Failed to connect !")
 
-            result.success(res)
+            result.success(res? 1: 0)
         } catch (e: Exception) {
             e.printStackTrace()
 
             activity.showToast("Failed to connect !")
-            result.success(false)
+            result.success(0)
         }
     }
 

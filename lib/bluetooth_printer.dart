@@ -24,10 +24,10 @@ class BluetoothPrinter {
   }
 
   /*连接蓝牙设备*/
-  Future<int> connectBlueTooth(int index) async {
+  Future<bool> connectBlueTooth(int index) async {
     int result =
         await _channel.invokeMethod('connectBlueTooth', {'index': index});
-    return result;
+    return result==1;
   }
 
   /*打印*/
