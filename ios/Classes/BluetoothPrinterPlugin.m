@@ -63,9 +63,11 @@
 
         
     //NSData *imgBytes = [NSData dataWithBytes:call.arguments[@"label"]];
+	NSArray *args = call.arguments;
+	FlutterStandardTypedData *list = args[0];
+    UIImage *label = [UIImage imageWithData:list.data];
 
-
-    //[blueToothPrinter imagePrint:ConvertImage.ConvertImg(@"call")];
+    [blueToothPrinter imagePrint:label];
     
 
     }else if([@"barcodePrint" isEqualToString:call.method]){

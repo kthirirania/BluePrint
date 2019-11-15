@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:async';
 import 'dart:convert';
 import 'dart:typed_data';
@@ -16,6 +17,10 @@ class BluetoothPrinter {
   /*开始扫描蓝牙*/
   Future startScanBlueTooth() async {
     await _channel.invokeMethod('startScanBlueTooth');
+  }
+  Future<List<dynamic>> getBoundDevices() async {
+    if(Platform.isIOS) return null;
+    return await _channel.invokeMethod('getBoundDevices');
   }
 
   /*连接蓝牙设备*/
@@ -41,13 +46,18 @@ class BluetoothPrinter {
   }
 
   Future<void> imagePrint(label) async {
-    await _channel.invokeMethod('imagePrint', {'label': label});
+    await _channel.invokeMethod('imagePrint', [label]);
   }
 
   /*是否已连接*/
   Future<bool> isConnected() async {
     int result = await _channel.invokeMethod('isConnected');
     return result == 1 ? true : false;
+  }
+
+  Future<void> destroy() async {
+    if(Platform.isIOS) return;
+    await _channel.invokeMethod('destroy');
   }
 
   /*监听扫描蓝牙设备回调事件*/
