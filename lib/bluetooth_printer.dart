@@ -15,7 +15,11 @@ class BluetoothPrinter {
   const EventChannel('bluetooth_printer/scanBlueToothEvent');
 
   BluetoothPrinter() {
-
+    _scanBlueToothEvent
+        .receiveBroadcastStream([""]).listen((dynamic data) {
+      final list = List<Map>.from(data);
+      if (_stream != null) _stream.add(list);
+    });
   }
 
   StreamController<List<Map>> _stream;
@@ -69,12 +73,11 @@ class BluetoothPrinter {
   Stream<List<Map>> get scanBlueToothEvent {
     if (_stream == null) {
       _stream = StreamController();
-      _scanBlueToothEvent
-          .receiveBroadcastStream([""]).listen((dynamic data) {
-        final list = List<Map>.from(data);
-            _stream.add(list);
-      });
     }
     return _stream.stream;
+  }
+
+  void resetStream() {
+    _stream = null;
   }
 }
