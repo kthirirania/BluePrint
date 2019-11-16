@@ -190,19 +190,19 @@ class BluetoothPrinterPlugin(private val activity: Activity, private val channel
                     // object and its info from the Intent.
                     val device = intent.getParcelableExtra<BluetoothDevice>(BluetoothDevice.EXTRA_DEVICE)
 
-                    mBluetoothPlugin.sendMsg(mapOf<String, Any>(Pair("status", 0), Pair("name", device.name), Pair("address", device.address)))
+//                    mBluetoothPlugin.sendMsg(mapOf<String, Any>(Pair("status", 0), Pair("name", device.name), Pair("address", device.address)))
 
                     mBeanList.add(mapOf(Pair("name", device.name), Pair("address", device.address)))
                     mBluetoothPlugin.sendMsg(mBeanList)
 
                 }
-                BluetoothAdapter.ACTION_DISCOVERY_STARTED -> mBluetoothPlugin.sendMsg(mapOf<String, Any>(Pair("status", 1)))
-                BluetoothAdapter.ACTION_DISCOVERY_FINISHED -> mBluetoothPlugin.sendMsg(mapOf<String, Any>(Pair("status", 2)))
+//                BluetoothAdapter.ACTION_DISCOVERY_STARTED -> mBluetoothPlugin.sendMsg(mapOf<String, Any>(Pair("status", 1)))
+//                BluetoothAdapter.ACTION_DISCOVERY_FINISHED -> mBluetoothPlugin.sendMsg(mapOf<String, Any>(Pair("status", 2)))
 
-                BluetoothDevice.ACTION_ACL_CONNECTED -> {
-                    if (mPrinterPlugin.isConnected())
-                        mBluetoothPlugin.sendMsg(mapOf<String, Any>(Pair("status", 3)))
-                }
+//                BluetoothDevice.ACTION_ACL_CONNECTED -> {
+//                    if (mPrinterPlugin.isConnected())
+//                        mBluetoothPlugin.sendMsg(mapOf<String, Any>(Pair("status", 3)))
+//                }
 //                BluetoothDevice.ACTION_ACL_DISCONNECT_REQUESTED ->
 //                BluetoothDevice.ACTION_ACL_DISCONNECTED -> connected = false
             }

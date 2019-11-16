@@ -14,7 +14,11 @@ class BluetoothPrinter {
   static const EventChannel _scanBlueToothEvent =
   const EventChannel('bluetooth_printer/scanBlueToothEvent');
 
-  Stream<List<Map>> _stream;
+  BluetoothPrinter() {
+
+  }
+
+  StreamController<List<Map>> _stream;
 
   /*开始扫描蓝牙*/
   Future startScanBlueTooth() async {
@@ -34,10 +38,9 @@ class BluetoothPrinter {
   }
 
   /*打印*/
-  Future<int> print(Map orderInfo) async {
-    int result = await _channel
+  Future<bool> print(Map orderInfo) async {
+    return await _channel
         .invokeMethod('print', {'orderJsonStr': json.encode(orderInfo)});
-    return result;
   }
 
   Future<void> testprint() async {
@@ -65,12 +68,13 @@ class BluetoothPrinter {
   /*监听扫描蓝牙设备回调事件*/
   Stream<List<Map>> get scanBlueToothEvent {
     if (_stream == null) {
-      _stream = _scanBlueToothEvent
-          .receiveBroadcastStream().map((dynamic map) =>
-      Map<String,
-          dynamic>.from(map));
-      /*.map<Map>((data) => data).toList()*/
+      _stream = StreamController();
+      _scanBlueToothEvent
+          .receiveBroadcastStream([""]).listen((dynamic data) {
+        final list = List<Map>.from(data);
+            _stream.add(list);
+      });
     }
-    return _stream;
+    return _stream.stream;
   }
 }
