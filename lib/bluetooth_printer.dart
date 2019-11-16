@@ -61,6 +61,6 @@ class BluetoothPrinter {
 
   /*监听扫描蓝牙设备回调事件*/
   Stream<List<Map>> get scanBlueToothEvent => _scanBlueToothEvent
-      .receiveBroadcastStream()
-       .map<Map>((data) => data).toList();
+      .receiveBroadcastStream().asBroadcastStream();
+       /*.map<Map>((data) => data).toList()*/
 }
