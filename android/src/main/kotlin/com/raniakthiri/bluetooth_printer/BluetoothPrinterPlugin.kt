@@ -62,7 +62,10 @@ class BluetoothPrinterPlugin(private val activity: Activity, private val channel
         }
 
         when (call.method) {
-            "isConnected" -> result.success(mPrinterPlugin.isConnected())
+            "isConnected" -> {
+                result.success(mPrinterPlugin.isConnected())
+                if (!mPrinterPlugin.isConnected()) init()
+            }
             "startScanBlueTooth" -> {
                 init()
                 mBluetoothPlugin.startScan(activity)
