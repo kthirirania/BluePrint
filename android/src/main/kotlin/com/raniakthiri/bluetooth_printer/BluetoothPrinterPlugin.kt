@@ -28,7 +28,7 @@ class BluetoothPrinterPlugin(private val activity: Activity, private val channel
 
         @JvmStatic
         fun registerWith(registrar: Registrar) {
-            val channel = MethodChannel(registrar.messenger(), "bluetooth_printer")
+            val channel = MethodChannel(registrar.messenger(), "bluetooth_printer/methodChannel")
             val plugin = BluetoothPrinterPlugin(registrar.activity(), channel, registrar)
             channel.setMethodCallHandler(plugin)
 
@@ -41,7 +41,7 @@ class BluetoothPrinterPlugin(private val activity: Activity, private val channel
 
         this.channel.setMethodCallHandler(this)
 
-        EventChannel(registrar.messenger(), "bluetooth_printer/stream").setStreamHandler(
+        EventChannel(registrar.messenger(), "bluetooth_printer/scanBlueToothEvent").setStreamHandler(
                 object : EventChannel.StreamHandler {
                     override fun onListen(args: Any, events: EventChannel.EventSink) {
                         mBluetoothPlugin.setEventChannel(events)
