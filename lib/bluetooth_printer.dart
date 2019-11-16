@@ -51,8 +51,7 @@ class BluetoothPrinter {
 
   /*是否已连接*/
   Future<bool> isConnected() async {
-    int result = await _channel.invokeMethod('isConnected');
-    return result == 1;
+    return await _channel.invokeMethod('isConnected');
   }
 
   Future<void> destroy() async {
