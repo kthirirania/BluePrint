@@ -28,9 +28,9 @@ class PrinterPlugin {
 
 
     fun printLabel(label: Map<*, *>): Boolean {
+        val count: Int = label["quantity"] as Int
         return if (label["type"] == 1) {
             val d1 = LabelPrint.printDefaultData(label["store"].toString(), label["name"].toString(), label["price"].toString(), label["barcode"].toString())
-            val count: Int = label["quantity"] as Int
             for(i in 0..count) {
                 sendBuffer(d1)
                 Thread.sleep(500)
@@ -38,7 +38,7 @@ class PrinterPlugin {
             true
         } else {
             val d2 = LabelPrint.printDoubleData(label["store"].toString(), label["name"].toString(), label["text"].toString(), label["vip"].toString(), label["price"].toString(), label["barcode"].toString())
-            val count: Int = label["quantity"] as Int
+
             for(i in 0..count) {
                 sendBuffer(d2)
                 Thread.sleep(500)
