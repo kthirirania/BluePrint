@@ -154,7 +154,8 @@ class BluetoothPrinterPlugin(private val activity: Activity, private val channel
                 activity.showToast("Printing Label...")
                 val args: List<*> = call.arguments as List<*>
                 val image = args[0] as ByteArray
-                val res = mPrinterPlugin.printImage(image)
+                val quantity = args[1] as Int
+                val res = mPrinterPlugin.printImage(image, quantity)
                 result.success(res)
                 return
             } catch (e: Exception) {

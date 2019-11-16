@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
     Uint8List pngBytes = byteData.buffer.asUint8List();
     //print(pngBytes);
 
-    bluetoothPrinter.imagePrint(pngBytes);
+    bluetoothPrinter.imagePrint(pngBytes, 1);
   }
 
   @override

@@ -30,14 +30,24 @@ class PrinterPlugin {
     fun printLabel(label: Map<*, *>): Boolean {
         return if (label["type"] == 1) {
             val d1 = LabelPrint.printDefaultData(label["store"].toString(), label["name"].toString(), label["price"].toString(), label["barcode"].toString())
-            sendBuffer(d1)
+            val count: Int = label["quantity"] as Int
+            for(i in 0..count) {
+                sendBuffer(d1)
+                Thread.sleep(500)
+            }
+            true
         } else {
             val d2 = LabelPrint.printDoubleData(label["store"].toString(), label["name"].toString(), label["text"].toString(), label["vip"].toString(), label["price"].toString(), label["barcode"].toString())
-            sendBuffer(d2)
+            val count: Int = label["quantity"] as Int
+            for(i in 0..count) {
+                sendBuffer(d2)
+                Thread.sleep(500)
+            }
+            true
         }
     }
 
-    fun printImage(image: ByteArray): Boolean {
+    fun printImage(image: ByteArray, quantity: Int): Boolean {
         val bmp = BitmapFactory.decodeByteArray(image, 0, image.size)
 
         // specifies the x and y of print - needs t
@@ -60,7 +70,11 @@ class PrinterPlugin {
         cmd = mergeArrays(cmd, END_LABEL) // merge cmd with end of print
         cmd = mergeArrays(cmd, PRINT_LABEL)
 
-        return sendBuffer(cmd)
+        for(i in 0..quantity) {
+            sendBuffer(cmd)
+            Thread.sleep(500)
+        }
+        return true
 
     }
 
