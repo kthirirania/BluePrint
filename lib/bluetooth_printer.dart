@@ -60,7 +60,7 @@ class BluetoothPrinter {
   }
 
   /*监听扫描蓝牙设备回调事件*/
-  Stream<List<dynamic>> get scanBlueToothEvent => _scanBlueToothEvent
-      .receiveBroadcastStream();
-      // .map((data) => json.decode(data));
+  Stream<List<Map>> get scanBlueToothEvent => _scanBlueToothEvent
+      .receiveBroadcastStream()
+       .map<Map>((data) => data).toList();
 }
