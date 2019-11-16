@@ -45,8 +45,8 @@ class BluetoothPrinter {
     await _channel.invokeMethod('barcodePrint');
   }
 
-  Future<void> imagePrint(label) async {
-    await _channel.invokeMethod('imagePrint', [label]);
+  Future<bool> imagePrint(label) async {
+    return await _channel.invokeMethod('imagePrint', [label]);
   }
 
   /*是否已连接*/

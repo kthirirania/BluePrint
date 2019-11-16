@@ -27,15 +27,14 @@ class PrinterPlugin {
     }
 
 
-    fun printDemo(): Boolean {
-        val d1 = LabelPrint.printDefaultData("Siyou Market ONE", "Test Product 1", "2.99", "2010030002880")
-        sendBuffer(d1)
-
-
-        val d2 = LabelPrint.printDoubleData("Siyou Market ONE", "Test Product 1", "20% Discount", "2.99", "3.49", "2010030002880")
-        sendBuffer(d2)
-
-        return true
+    fun printLabel(label: Map<*, *>): Boolean {
+        return if (label["type"] == 1) {
+            val d1 = LabelPrint.printDefaultData(label["store"].toString(), label["name"].toString(), label["price"].toString(), label["barcode"].toString())
+            sendBuffer(d1)
+        } else {
+            val d2 = LabelPrint.printDoubleData(label["store"].toString(), label["name"].toString(), label["text"].toString(), label["vip"].toString(), label["price"].toString(), label["barcode"].toString())
+            sendBuffer(d2)
+        }
     }
 
     fun printImage(image: ByteArray): Boolean {

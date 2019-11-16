@@ -134,9 +134,9 @@ class BluetoothPrinterPlugin(private val activity: Activity, private val channel
             val label = call.arguments as Map<*, *>
 
             try {
-                mPrinterPlugin.printDemo()
                 activity.showToast("Printing Label...")
-                result.success(true)
+                val res = mPrinterPlugin.printLabel(label)
+                result.success(res)
                 return
             } catch (e: Exception) {
                 activity.showToast("Error: ${e.message}")
