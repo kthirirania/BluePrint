@@ -5,13 +5,13 @@ PODS:
 
 DEPENDENCIES:
   - bluetooth_printer (from `.symlinks/plugins/bluetooth_printer/ios`)
-  - Flutter (from `.symlinks/flutter/ios`)
+  - Flutter (from `.symlinks/flutter/ios-release`)
 
 EXTERNAL SOURCES:
   bluetooth_printer:
     :path: ".symlinks/plugins/bluetooth_printer/ios"
   Flutter:
-    :path: ".symlinks/flutter/ios"
+    :path: ".symlinks/flutter/ios-release"
 
 SPEC CHECKSUMS:
   bluetooth_printer: e95e240fa9f6b7e3e606c020afded71005455950
