@@ -118,82 +118,87 @@ class MemberProductLabel extends StatelessWidget {
     return SizedBox(
 //      height: 200,
 //      width: 260,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: Text(
-              "Product Test 1",
-              style: Theme.of(context)
-                  .textTheme
-                  .title
-                  .copyWith(fontSize: 16.0, fontWeight: FontWeight.bold),
-            ),
-          ),
-          Container(
-            height: 2.0,
-            color: Colors.black,
-            margin: EdgeInsets.symmetric(horizontal: 4.0, vertical: 8.0),
-          ),
-          Row(
-            children: <Widget>[
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                mainAxisSize: MainAxisSize.max,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "Siyou Tech",
-                      textAlign: TextAlign.center,
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
-                    ),
-                  ),
-                  BarCodeImage(
-                    padding: EdgeInsets.all(8.0),
-                    hasText: true,
-                    data: "2010030002880",
-                    codeType: BarCodeType.CodeEAN13,
-                    barHeight: height,
-                    lineWidth: lineWidth,
-                    onError: (error) {
-                      print('error = $error');
-                    },
-                  ),
-                ],
+      child: DecoratedBox(
+        decoration: const BoxDecoration(
+            color: Colors.white
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: Text(
+                "Product Test 1",
+                style: Theme.of(context)
+                    .textTheme
+                    .title
+                    .copyWith(fontSize: 16.0, fontWeight: FontWeight.bold),
               ),
-              Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            ),
+            Container(
+              height: 2.0,
+              color: Colors.black,
+              margin: EdgeInsets.symmetric(horizontal: 4.0, vertical: 8.0),
+            ),
+            Row(
+              children: <Widget>[
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
-                    Text(
-                      "\€ 1,99",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w800, fontSize: 34.0),
-                      textAlign: TextAlign.center,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Siyou Tech",
+                        textAlign: TextAlign.center,
+                        style:
+                            TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+                      ),
                     ),
-                    Text(text),
-                    SizedBox(
-                      height: 16.0,
-                    ),
-                    Text(
-                      "\€ 1,49",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600, fontSize: 28.0),
-                      textAlign: TextAlign.center,
+                    BarCodeImage(
+                      padding: EdgeInsets.all(8.0),
+                      hasText: true,
+                      data: "2010030002880",
+                      codeType: BarCodeType.CodeEAN13,
+                      barHeight: height,
+                      lineWidth: lineWidth,
+                      onError: (error) {
+                        print('error = $error');
+                      },
                     ),
                   ],
                 ),
-              )
-            ],
-          ),
-        ],
+                Expanded(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        "\€ 1,99",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w800, fontSize: 34.0),
+                        textAlign: TextAlign.center,
+                      ),
+                      Text(text),
+                      SizedBox(
+                        height: 16.0,
+                      ),
+                      Text(
+                        "\€ 1,49",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600, fontSize: 28.0),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

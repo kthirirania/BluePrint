@@ -135,9 +135,7 @@
            return;
     }
     JWPrinter *printer = [[JWPrinter alloc] init];
-    [printer appendTitle:@"收货人：" value:@"test"];
-    [printer appendSeperatorLine];
-    //[printer appendImage:label];
+    [printer appendImage:label alignment:HLTextAlignmentCenter maxWidth:500];
     /*执行打印*/
     NSData *mainData = [printer getFinalData];
     [[JWBluetoothManage sharedInstance] sendPrintData:mainData completion:^(BOOL completion, CBPeripheral *connectPerpheral,NSString *error) {

@@ -1,8 +1,9 @@
 import Flutter
 import Foundation
 
-class ConvertImage : NSDObject{
-
+class ConvertImage {
+    
+    /*
     static func ConvertImg (_ call FlutterMethodCall) -> UIImage {
 
         let imgData = call.arguments["label"] as! FlutterStandardTypedData
@@ -11,5 +12,6 @@ class ConvertImage : NSDObject{
 
         return label
     }
+ */
 
 }
