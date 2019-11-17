@@ -21,7 +21,7 @@ class BluetoothPrinter {
             final list = List<Map>.from(data);
             if (_stream != null) _stream.add(list);
           } else {
-            final list = (JSON.decode(data) as List).map((e) => {"name": e, "address": ""}).toList();
+            final list = (json.decode(data) as List).map((e) => {"name": e, "address": ""}).toList();
             if (_stream != null) _stream.add(list);
           }
     });
