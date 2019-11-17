@@ -43,26 +43,6 @@
              [blueToothPrinter testprint];
 
     }else if([@"imagePrint" isEqualToString:call.method]){
-
-
-    // NSData *imgBytes = [call.arguments[@"label"] array];
-
-     //UIImage *label = [UIImage imageWithData:call.arguments[@"label"]];
-        
-
-/*
-        CGColorSpaceRef colorSpace=CGColorSpaceCreateDeviceRGB();
-           CGContextRef bitmapContext=CGBitmapContextCreate([call.arguments[@"label"] bytes], 100, 100, 8, 100, colorSpace,  kCGImageAlphaPremultipliedFirst | kCGBitmapByteOrderDefault);
-           CFRelease(colorSpace);
-           free([call.arguments[@"label"] bytes]);
-           CGImageRef cgImage=CGBitmapContextCreateImage(bitmapContext);
-           CGContextRelease(bitmapContext);
-
-           UIImage * label = [UIImage imageWithCGImage:[call.arguments[@"label"] bytes]];
-*/
-
-        
-    //NSData *imgBytes = [NSData dataWithBytes:call.arguments[@"label"]];
 	NSArray *args = call.arguments;
 	FlutterStandardTypedData *list = args[0];
     UIImage *label = [UIImage imageWithData:list.data];
