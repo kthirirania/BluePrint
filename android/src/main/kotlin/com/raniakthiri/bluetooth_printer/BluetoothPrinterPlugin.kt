@@ -63,7 +63,7 @@ class BluetoothPrinterPlugin(private val activity: Activity, private val channel
 
         when (call.method) {
             "isConnected" -> {
-                result.success(mPrinterPlugin.isConnected())
+                result.success(if(mPrinterPlugin.isConnected()) 1 else 0)
                 if (!mPrinterPlugin.isConnected()) init()
             }
             "startScanBlueTooth" -> {
@@ -139,7 +139,7 @@ class BluetoothPrinterPlugin(private val activity: Activity, private val channel
             try {
                 activity.showToast("Printing Label...")
                 val res = mPrinterPlugin.printLabel(label)
-                result.success(res)
+                result.success(if(res) 1 else 0)
                 return
             } catch (e: Exception) {
                 activity.showToast("Error: ${e.message}")
@@ -147,7 +147,7 @@ class BluetoothPrinterPlugin(private val activity: Activity, private val channel
         }
 
         activity.showToast("Please connect to printer !")
-        result.success(false)
+        result.success(0)
         return
     }
 
@@ -159,7 +159,7 @@ class BluetoothPrinterPlugin(private val activity: Activity, private val channel
                 val image = args[0] as ByteArray
                 val quantity = args[1] as Int
                 val res = mPrinterPlugin.printImage(image, quantity)
-                result.success(res)
+                result.success(if(res) 1 else 0)
                 return
             } catch (e: Exception) {
                 activity.showToast("Error: ${e.message}")
@@ -167,7 +167,7 @@ class BluetoothPrinterPlugin(private val activity: Activity, private val channel
         }
 
         activity.showToast("Please connect to printer !")
-        result.success(false)
+        result.success(0)
         return
     }
 

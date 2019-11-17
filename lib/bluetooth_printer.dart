@@ -17,8 +17,13 @@ class BluetoothPrinter {
   BluetoothPrinter() {
     _scanBlueToothEvent
         .receiveBroadcastStream([""]).listen((dynamic data) {
-      final list = List<Map>.from(data);
-      if (_stream != null) _stream.add(list);
+          if(Platform.isAndroid) {
+            final list = List<Map>.from(data);
+            if (_stream != null) _stream.add(list);
+          } else {
+            final list = (JSON.decode(data) as List).map((e) => {"name": e, "address": ""}).toList();
+            if (_stream != null) _stream.add(list);
+          }
     });
   }
 
@@ -43,8 +48,9 @@ class BluetoothPrinter {
 
   /*打印*/
   Future<bool> print(Map orderInfo) async {
-    return await _channel
+    final int res = await _channel
         .invokeMethod('print', {'orderJsonStr': json.encode(orderInfo)});
+    return res == 1;
   }
 
   Future<void> testprint() async {
@@ -56,12 +62,14 @@ class BluetoothPrinter {
   }
 
   Future<bool> imagePrint(label, int index) async {
-    return await _channel.invokeMethod('imagePrint', [label, index]);
+    final int res = await _channel.invokeMethod('imagePrint', [label, index]);
+    return res == 1;
   }
 
   /*是否已连接*/
   Future<bool> isConnected() async {
-    return await _channel.invokeMethod('isConnected');
+    final int res = await _channel.invokeMethod('isConnected');
+    return res == 1;
   }
 
   Future<void> destroy() async {

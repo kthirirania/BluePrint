@@ -34,6 +34,7 @@
     }else if([@"print" isEqualToString:call.method]){
         NSString * orderJsonStr = call.arguments[@"orderJsonStr"];
         [blueToothPrinter print:orderJsonStr];
+        result(@(1));
 
     }else if([@"isConnected" isEqualToString:call.method]){
         int r = [blueToothPrinter isConnected];
@@ -43,12 +44,17 @@
              [blueToothPrinter testprint];
 
     }else if([@"imagePrint" isEqualToString:call.method]){
-	NSArray *args = call.arguments;
-	FlutterStandardTypedData *list = args[0];
-    UIImage *label = [UIImage imageWithData:list.data];
+    	NSArray *args = call.arguments;
+    	FlutterStandardTypedData *list = args[0];
+        NSNumber *quantity = args[1];
 
-    [blueToothPrinter imagePrint:label];
-    
+        UIImage *label = [UIImage imageWithData:list.data];
+
+        for(i = 0; i < quantity; i++) { 
+            [blueToothPrinter imagePrint:label];
+        }
+        
+        result(@(1));
 
     }else if([@"barcodePrint" isEqualToString:call.method]){
               [blueToothPrinter barcodePrint];
