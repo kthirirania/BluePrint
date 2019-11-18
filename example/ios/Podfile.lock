@@ -14,7 +14,7 @@ EXTERNAL SOURCES:
     :path: ".symlinks/flutter/ios"
 
 SPEC CHECKSUMS:
-  bluetooth_printer: e95e240fa9f6b7e3e606c020afded71005455950
+  bluetooth_printer: 5117cefb78510675848a12c0da75920b07d08e9a
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
 
 PODFILE CHECKSUM: 6c8cbf734778546f3c2b92e21c551935e7c6caab
