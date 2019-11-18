@@ -50,7 +50,7 @@
 
         UIImage *label = [UIImage imageWithData:list.data];
 
-        for(i = 0; i < quantity; i++) { 
+        for(int i = 0; i < quantity; i++) {
             [blueToothPrinter imagePrint:label];
         }
         
