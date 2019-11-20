@@ -39,7 +39,7 @@ class PrinterPlugin {
         } else {
             val d2 = LabelPrint.printDoubleData(label["store"].toString(), label["name"].toString(), label["text"].toString(), label["vip"].toString(), label["price"].toString(), label["barcode"].toString())
 
-            for(i in 0..count) {
+            for (i in 0 until count) {
                 sendBuffer(d2)
                 Thread.sleep(500)
             }
@@ -70,7 +70,7 @@ class PrinterPlugin {
         cmd = mergeArrays(cmd, END_LABEL) // merge cmd with end of print
         cmd = mergeArrays(cmd, PRINT_LABEL)
 
-        for(i in 0..quantity) {
+        for (i in 0 until quantity) {
             sendBuffer(cmd)
             Thread.sleep(500)
         }
