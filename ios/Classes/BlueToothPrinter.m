@@ -131,7 +131,7 @@
 
     //打印内容
     if (manage.stage != JWScanStageCharacteristics) {
-           NSLog(@"打印失败：%@",@"");
+           NSLog(@"JWScanStageCharacteristics error：%@",@"");
            return;
     }
     JWPrinter *printer = [[JWPrinter alloc] init];
@@ -140,9 +140,9 @@
     NSData *mainData = [printer getFinalData];
     [[JWBluetoothManage sharedInstance] sendPrintData:mainData completion:^(BOOL completion, CBPeripheral *connectPerpheral,NSString *error) {
         if (completion) {
-            NSLog(@"打印成功");
+            NSLog(@"print completed");
         }else{
-            NSLog(@"写入错误---:%@",error);
+            NSLog(@"error print not completed",error);
         }
     }];
 }
