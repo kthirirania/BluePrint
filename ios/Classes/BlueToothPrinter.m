@@ -135,14 +135,14 @@
            return;
     }
     JWPrinter *printer = [[JWPrinter alloc] init];
-    [printer appendImage:label alignment:HLTextAlignmentCenter maxWidth:400];
+    [printer appendImage:label alignment:HLTextAlignmentCenter maxWidth:500];
     /*执行打印*/
     NSData *mainData = [printer getFinalData];
     [[JWBluetoothManage sharedInstance] sendPrintData:mainData completion:^(BOOL completion, CBPeripheral *connectPerpheral,NSString *error) {
         if (completion) {
             NSLog(@"print completed");
         }else{
-            NSLog(@"error print not completed",error);
+            NSLog(@"error print not completed", error);
         }
     }];
 }
