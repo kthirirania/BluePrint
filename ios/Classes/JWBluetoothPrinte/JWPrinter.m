@@ -8,7 +8,7 @@
 
 #import "JWPrinter.h"
 
-#define kMargin 20
+#define kMargin 0
 #define kPadding 2
 #define kWidth 320
 
@@ -332,10 +332,8 @@
     UIImage *newImage = [image imageWithscaleMaxWidth:maxWidth];
     
     NSData *imageData = [newImage bitmapData];
-    [_printerData appendData:imageData];
     
-    // 3.换行
-    [self appendNewLine];
+    [_printerData appendData:imageData];
     
     // 4.打印图片后，恢复文字的行间距
     Byte lineSpace[] = {0x1B,0x32};

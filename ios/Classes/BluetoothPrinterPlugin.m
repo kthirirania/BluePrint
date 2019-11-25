@@ -46,14 +46,16 @@
     }else if([@"imagePrint" isEqualToString:call.method]){
     	NSArray *args = call.arguments;
     	FlutterStandardTypedData *list = args[0];
-        NSNumber *quantity = args[1];
-
         UIImage *label = [UIImage imageWithData:list.data];
-
-        for(int i = 0; i < quantity; i++) {
-            [blueToothPrinter imagePrint:label];
-        }
+        NSNumber *quantity = args[1];
         
+        if((quantity == nil) || (quantity.intValue == 0)){
+             [blueToothPrinter imagePrint:label];
+        }else{
+            for(int i = 0; i < quantity.intValue; i++) {
+                [blueToothPrinter imagePrint:label];
+            }
+        }
         result(@(1));
 
     }else if([@"barcodePrint" isEqualToString:call.method]){
