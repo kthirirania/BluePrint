@@ -1,16 +1,13 @@
-import 'dart:io';
 import 'dart:async';
 import 'dart:convert';
-import 'dart:typed_data';
+import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
 class BluetoothPrinter {
   static const MethodChannel _channel =
   const MethodChannel('bluetooth_printer/methodChannel');
 
-  /*事件通道*/
   static const EventChannel _scanBlueToothEvent =
   const EventChannel('bluetooth_printer/scanBlueToothEvent');
 
@@ -29,7 +26,6 @@ class BluetoothPrinter {
 
   StreamController<List<Map>> _stream;
 
-  /*开始扫描蓝牙*/
   Future startScanBlueTooth() async {
     await _channel.invokeMethod('startScanBlueTooth');
   }
@@ -39,14 +35,12 @@ class BluetoothPrinter {
     return await _channel.invokeMethod('getBoundDevices');
   }
 
-  /*连接蓝牙设备*/
   Future<bool> connectBlueTooth(int index) async {
     int result =
     await _channel.invokeMethod('connectBlueTooth', {'index': index});
     return result == 1;
   }
 
-  /*打印*/
   Future<bool> print(Map orderInfo) async {
     final int res = await _channel
         .invokeMethod('print', {'orderJsonStr': json.encode(orderInfo)});
@@ -66,7 +60,6 @@ class BluetoothPrinter {
     return res == 1;
   }
 
-  /*是否已连接*/
   Future<bool> isConnected() async {
     final int res = await _channel.invokeMethod('isConnected');
     return res == 1;
@@ -77,7 +70,6 @@ class BluetoothPrinter {
     await _channel.invokeMethod('destroy');
   }
 
-  /*监听扫描蓝牙设备回调事件*/
   Stream<List<Map>> get scanBlueToothEvent {
     if (_stream == null) {
       _stream = StreamController();
