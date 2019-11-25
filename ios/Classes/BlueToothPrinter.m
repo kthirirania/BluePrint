@@ -135,6 +135,7 @@
            return;
     }
     JWPrinter *printer = [[JWPrinter alloc] init];
+    [printer appendNewLine];
     [printer appendImage:label alignment:HLTextAlignmentRight maxWidth:500];
     [printer appendNewLine];
     /*执行打印*/
