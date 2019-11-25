@@ -8,7 +8,7 @@
 
 #import "JWPrinter.h"
 
-#define kMargin 20
+#define kMargin 0
 #define kPadding 2
 #define kWidth 320
 
