@@ -333,8 +333,6 @@
     
     NSData *imageData = [newImage bitmapData];
     
-    [self appendNewLine];
-    
     [_printerData appendData:imageData];
     
     // 3.换行
