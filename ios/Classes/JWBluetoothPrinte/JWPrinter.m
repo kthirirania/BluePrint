@@ -34,7 +34,7 @@
     _printerData = [[NSMutableData alloc] init];
     
     // 1.初始化打印机
-    Byte initBytes[] = {0x1B,0x50};
+    Byte initBytes[] = {0x1B,0x60};
     [_printerData appendBytes:initBytes length:sizeof(initBytes)];
     // 2.设置行间距为1/6英寸，约34个点
     // 另一种设置行间距的方法看这个 @link{-setLineSpace:}
