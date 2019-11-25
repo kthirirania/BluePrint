@@ -56,9 +56,6 @@
                 [blueToothPrinter imagePrint:label];
             }
         }
-
-       
-        
         result(@(1));
 
     }else if([@"barcodePrint" isEqualToString:call.method]){
