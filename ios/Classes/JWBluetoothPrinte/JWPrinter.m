@@ -335,10 +335,6 @@
     
     [_printerData appendData:imageData];
     
-    // 3.换行
-    [self appendNewLine];
-    
-    
     // 4.打印图片后，恢复文字的行间距
     Byte lineSpace[] = {0x1B,0x32};
     [_printerData appendBytes:lineSpace length:sizeof(lineSpace)];
