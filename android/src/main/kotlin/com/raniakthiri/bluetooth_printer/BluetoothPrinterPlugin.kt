@@ -68,6 +68,7 @@ class BluetoothPrinterPlugin(private val activity: Activity, private val channel
             }
             "startScanBlueTooth" -> {
                 init()
+                mBeanList = ArrayList()
                 mBluetoothPlugin.startScan(activity)
             }
             "getBoundDevices" -> getBoundDevices(result)
